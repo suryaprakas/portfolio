@@ -62,39 +62,21 @@
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1>Hi, I'm Surya!</h1>
-      <p class="lead text-muted">Hey, my name is Surya Prakasam and I love to create Django projects.It's the thrill of handling the requests that the people want!</p>
-      <p>
-        <a href="mailto:surya030996@gmail.com" class="btn btn-primary my-2">Email me</a>
-      </p>
-      <img src="{% static 'gGLnRUt.png' %}" height="300" width="300">
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{ job.image.url }}" />
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-
-
-      </div>
-    </div>
-  </div>
-
+<div class="container">
+<h1 class="text-center pt-3">Welcome to Surya's Blog</h1>
+<br />
+<br />
+<h2>Latest Posts</h2>
+<hr />
+{% for blog in blogs.all %}
+<a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+{{ blog.pub_date_pretty }}
+<br />
+<img class="img-fluid" src="{{ blog.image.url }}" height="200" width="200">
+<br />
+<p>{{ blog.summary }}</p>
+{% endfor %}
+</div>
 </main>
 
 <footer class="text-muted">
